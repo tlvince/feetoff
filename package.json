@@ -1,0 +1,25 @@
+{
+  "name": "feetoff",
+  "version": "1.0.0",
+  "description": "Pre-emptive authentication monitoring for CouchDB",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "authentication",
+    "audit",
+    "couchdb"
+  ],
+  "author": "Tom Vincent <npm@tlvince.com> (http://tlvince.com/)",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^2.3.10",
+    "config": "^1.7.0",
+    "request": "^2.47.0"
+  },
+  "devDependencies": {
+    "eslint": "^0.9.1"
+  }
+}
