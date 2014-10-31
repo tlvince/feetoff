@@ -43,23 +43,11 @@ function createQueries(dbs) {
   return query;
 }
 
-function parseResults(results) {
-  var parsed = {};
-  function parse(db, result) {
-    var body = result[1];
-    parsed[db] = body;
-  }
-  for (var db in results) {
-    parse(db, results[db]);
-  }
-  return parsed;
-}
-
 function tallyAccessible(results) {
   var accessibles = [];
   for (var db in results) {
-    var result = results[db];
-    if (!result.error) {
+    var response = results[db][0];
+    if (response.statusCode !== 401) {
       accessibles.push(db);
     }
   }
@@ -79,7 +67,6 @@ function feetoff() {
     .then(filterWhitelist)
     .then(createQueries)
     .props()
-    .then(parseResults)
     .then(tallyAccessible)
     .then(log)
     .catch(errorHandler);
