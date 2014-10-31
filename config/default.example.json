@@ -1,0 +1,6 @@
+{
+  "couchdb": "http://localhost:5984",
+  "whitelist": [
+    "_replicator"
+  ]
+}
