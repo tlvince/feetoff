@@ -59,6 +59,11 @@ function log(results) {
     accessible: results
   };
   console.log(JSON.stringify(json));
+  if (results.length > 0) {
+    /*eslint-disable no-process-exit */
+    process.exit(1);
+    /*eslint-enable no-process-exit */
+  }
 }
 
 function feetoff() {
