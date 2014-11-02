@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 'use strict';
 
 var config = require('config');
@@ -16,7 +18,8 @@ function errorHandler(error) {
   if (error.body) {
     error = error.body;
   }
-  console.error(JSON.stringify(error));
+  console.error(error);
+  process.exit(1);
 }
 
 function responseHandler(response, body) {
@@ -55,26 +58,17 @@ function tallyAccessible(results) {
 }
 
 function log(results) {
-  var json = {
-    accessible: results
-  };
-  console.log(JSON.stringify(json));
   if (results.length > 0) {
-    /*eslint-disable no-process-exit */
+    console.log(results.join('\n'));
     process.exit(1);
-    /*eslint-enable no-process-exit */
   }
 }
 
-function feetoff() {
-  return request(couchdb + '/_all_dbs')
-    .spread(responseHandler)
-    .then(filterWhitelist)
-    .then(createQueries)
-    .props()
-    .then(tallyAccessible)
-    .then(log)
-    .catch(errorHandler);
-}
-
-feetoff();
+request(couchdb + '/_all_dbs')
+  .spread(responseHandler)
+  .then(filterWhitelist)
+  .then(createQueries)
+  .props()
+  .then(tallyAccessible)
+  .then(log)
+  .catch(errorHandler);

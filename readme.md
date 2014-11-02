@@ -11,14 +11,12 @@ that are accessible.
    table below
 2. Run `npm start`
 
-A list of accessible databases is returned as JSON:
+A list of accessible databases is returned:
 
-```json
-{
-   "accessible" : [
-      "a"
-   ]
-}
+```shell
+_replicator
+_users
+public
 ```
 
 ## Config

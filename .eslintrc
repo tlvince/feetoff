@@ -40,3 +40,4 @@ rules:
   space-in-brackets:
     - 2
     - never
+  no-process-exit: 0
